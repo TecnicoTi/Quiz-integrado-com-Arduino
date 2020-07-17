@@ -1,0 +1,64 @@
+
+.html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: revert;
+    /*-webkit-tap-highlight-color: transparent;*/
+}
+
+.inputOptions {
+    position: absolute;
+    visibility: hidden;
+}
+
+#Letra {
+    color: aliceblue;
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+
+
+}
+
+#navbarDropdown1 {
+    color: aliceblue;
+}
+
+#container_principal {
+    width: 50%;
+    margin: 2px;
+    margin-top: 2px;
+    margin-left: 25%;
+}
+
+#imagem_principal {
+    width: 50%;
+}
+
+#dificuldade {
+    margin: 6px;
+    margin-left: -7px;
+    margin-top: 0px;
+
+}
+
+#nome {
+    margin: 6px;
+}
+
+#input_proximo {
+    margin: 2px;
+    margin-left: 135px;
+}
+
+#input_nome {
+    /*text-transform: uppercase;*/
+}
+
+.body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+

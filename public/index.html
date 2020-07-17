@@ -1,0 +1,137 @@
+<!-- <?php $random = "?pedro=" . mt_rand(); ?> -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="js/jquery.js?v=<?= $random ?>"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css?v=<?= $random ?>">
+    <link rel="stylesheet" href="css/index.css?v=<?= $random ?>">
+    <link rel="stylesheet" href="css/radio.css?v=<?= $random ?>">
+
+    <link rel="stylesheet" href="css/swal.css?v=<?= $random ?>">
+
+<!--    <link rel="stylesheet" href="arduino.php?v=--><!--">-->   <!-- Esta dando erro o script do arduino -->
+
+    <title>Hello, world!</title>
+    <style>
+        body {
+            background-image: url("img/fundo-quadriculado.jpg" ) ;
+            background-color: #0e0814;
+            margin-top: 0px;
+                        /*background: no-repeat center top fixed;*/
+        }
+    </style>
+</head>
+
+<!--onselectstart='return false'-->
+<body>
+
+<div class="bd-example  " id="container_principal">
+    <center><img id="imagem_principal"  src="img/quiz-2191229_960_720.png" alt="QUIZ"> </center>
+    <center id="Letra"><h3 > Seja bem vindo ao QUIZ NIGTH</h3>
+        <p > Ensira os dados abaixo.</p>
+    </center>
+
+    <div class="row">
+        <div class="col">
+            <input type="text" name="nome" id='input_nome' class="campo form-control" maxlength="40" placeholder="Nome"
+                   alt="insira seu nome" onblur="formatanome(this.value)" required autofocus>
+        </div>
+        <div class="col">
+            <select id="dificuldade" class="form-control" alt="insira dificuldade">
+                <option id="facil" value="facil" alt="dificuldade facil">Fácil</option>
+                <option id="medio" value="medio" alt="dificuldade Media">Médio</option>
+                <option id="dificil" value="dificil" alt="dificuldade dificil">Dificil</option>
+
+            </select>
+            <!-- Botão para acionar modal -->
+            <input type="submit" value="Próximo" id="input_proximo" class="btn btn-outline-info" data-toggle="modal"
+                   value="Proximo">
+            <script>
+                $(document).on('click', '#input_proximo', function () {
+
+                    if(document.getElementById("input_nome").value == ""){
+                        alert('Por favor, preencha o campo Nome');
+                        document.getElementById("input_nome").focus();
+                        return false
+                    }
+                    var nome = $('#input_nome').val(),
+                        dificuldade = $('#dificuldade').val(),
+                        TituloModalCentralizado = '<b> ATENÇÃO ' + nome + '!</b>';
+                        text = 'Cada dificuldade contém seu tempo para responder, Há difculdade dificil é a unica\n' +
+                            'que contém um tempo há mais em relação das outras  dificuldade.\n' +
+                            'Boa Sorte... <b>' + nome + '!</b><br>';
+
+                    $('#body-modal-alert').html(text)
+                    $('#aviso').html(TituloModalCentralizado)
+                    $('#ExemploModalCentralizado').modal('show')
+                }).on('click', '#action_seguinte', function () {
+                    var nome = $('#input_nome').val(),
+                        dificuldade = $('#dificuldade').val();
+
+                    localStorage.setItem("nome", nome);
+                    localStorage.setItem("dificuldade", dificuldade);
+
+                    //pra pegar o valor no localstorage usa
+                    //localStorage.getItem('nome')
+
+
+                })
+            </script>
+            <!-- Modal -->
+            <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog"
+                 aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="TituloModalCentralizado">
+                                <h3 id="aviso"></h3>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div id="body-modal-alert" class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                                <input type="submit" value="Seguinte" class="btn btn-primary" data-toggle="modal"
+                                       value="Seguinte" id="action_seguinte">
+                            </div>
+                            <!-- Script das questões -->
+                            <script>
+                                // Ao clicar em seguinte irá verificar qual a opção selecionada e retornará a função da opção
+                                // Local das opções: js/main.js
+                                $(document).on('click', '#action_seguinte', function () {
+                                    var selecionada = $('#dificuldade option:selected').text()
+                                    if (selecionada == 'Fácil') {
+                                        func_facil();
+                                    }
+                                    else if (selecionada == 'Médio') {
+                                        func_medio();
+                                    }
+                                    else if (selecionada == 'Dificil') {
+                                        func_dificil();
+                                    }
+                                })
+                            </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<img src="img/king1.png">
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="js/popper.min.js?v=<?/*= $random */?>"></script>-->
+<script src="js/bootstrap.min.js?v=<?= $random ?>"></script>
+<script src="js/sweetalert2.all.js?v=<?= $random ?>"></script>
+<script src="http://127.0.0.1:8000/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
